@@ -1,12 +1,13 @@
 $:.unshift(File.dirname(__FILE__) + '/../../../rails/activesupport/lib')
 $:.unshift(File.dirname(__FILE__) + '/../../../rails/activerecord/lib')
-$:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'test/unit'
 require 'active_support'
 require 'active_record'
 require 'active_record/fixtures'
-require 'acts_as_tree'
+
+$:.unshift(File.dirname(__FILE__) + '/../lib')
+require "#{File.dirname(__FILE__)}/../init"
 
 config = YAML::load(IO.read(File.dirname(__FILE__) + '/database.yml'))
 ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/debug.log")
