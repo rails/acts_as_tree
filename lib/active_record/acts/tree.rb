@@ -47,7 +47,7 @@ module ActiveRecord
           has_many :children, :class_name => name, :foreign_key => configuration[:foreign_key], :order => configuration[:order], :dependent => :destroy
 
           class_eval <<-EOV
-            include ActsAsTree::InstanceMethods
+            include ActiveRecord::Acts::Tree::InstanceMethods
 
             def self.roots
               find(:all, :conditions => "#{configuration[:foreign_key]} IS NULL", :order => #{configuration[:order].nil? ? "nil" : %Q{"#{configuration[:order]}"}})
